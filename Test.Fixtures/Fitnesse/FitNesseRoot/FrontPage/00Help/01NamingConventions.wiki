@@ -1,0 +1,6 @@
+---
+Help: Naming conventions for tables and columns
+Suites: Naming, Convention
+Test
+---
+<test page>

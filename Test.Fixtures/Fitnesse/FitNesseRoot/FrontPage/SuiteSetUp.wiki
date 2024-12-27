@@ -1,0 +1,17 @@
+---
+Help: Suite Setup
+Static
+---
+!*> Fitnesse Setup
+!|import                          |
+|Test.Fixtures.Utils.Setup        |
+|Test.Fixtures.Utils.DecisionTable|
+*!
+
+!3 Suite Set Up
+
+Included at the top of a test page and before SetUp. When a suite is run, this page will only be included once at the top of the suite.
+
+!|Suite Setup|
+|Setup?      |
+|OK          |

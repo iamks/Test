@@ -1,0 +1,5 @@
+---
+Static
+---
+!1 Mock Data from external Endpoints
+!contents -R2 -g -p -h

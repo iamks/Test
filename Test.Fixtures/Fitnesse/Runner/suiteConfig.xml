@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<suiteConfig>
+	<ApplicationUnderTest>
+		<AddAssembly>..\Binaries\net8.0\win-x64\Test.Fixtures.dll</AddAssembly>
+	</ApplicationUnderTest>
+	<Settings>
+		<Runner>fitSharp.Slim.Service.Runner</Runner>
+	</Settings>
+</suiteConfig>

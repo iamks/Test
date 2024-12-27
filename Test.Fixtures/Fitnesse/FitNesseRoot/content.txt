@@ -1,0 +1,4 @@
+!define TEST_SYSTEM {slim}
+!define slim.port {0}
+!define COMMAND_PATTERN {%m .\Runner\Runner.dll -c .\Runner\suiteConfig.xml %p}
+!define TEST_RUNNER {dotnet}

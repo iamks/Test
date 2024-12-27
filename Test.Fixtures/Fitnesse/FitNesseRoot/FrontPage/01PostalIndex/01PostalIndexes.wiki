@@ -1,0 +1,63 @@
+---
+Help: Fetch postal address information based on pin code
+Test
+---
+!*> Fitnesse Setup
+!note Import the namespaces of fixtures used in this page
+!|import                                                               |
+|Test.Fixtures.Capability.PostalIndex.GetPostalIndexByPostalCode       |
+|Test.Fixtures.Capability.PostalIndex.GetPostalIndexByPostalCode.Output|
+|Test.Fixtures.Database.PostalIndex.CreatePostalIndex                  |
+|Test.Fixtures.Database.PostalIndex.CreatePostalIndex.Input            |
+
+*!
+
+!headings
+
+!3 Mocks
+!*> Zip Code Lookup
+!include -c .FrontPage.01PostalIndex.00Mock.01ZipCodeLookupMockData.01GetZipCodeDetails
+
+*!
+
+!3 Test Case Description
+!note Describe the intention and flow of the test case
+
+!3 Include Creation of Data
+!***> Create Postal Indexes To Database
+!***> Define Inputs
+!|ddt: Request For Place In Create Postal Index To Database               |
+|Fitnesse Id |Place Name  |Longitude|State    |State Abbreviation|Latitude|
+|RqPCPID01_Id|Mahadevapura|77.1594  |Karnataka|KA                |13.0499 |
+
+!|ddt: Request For Postal Index In Create Postal Index To Database|
+|Fitnesse Id  |Post Code|Country|Country Abbreviation|Places      |
+|RqPICPID01_Id|560048   |India  |In                  |RqPCPID01_Id|
+*!
+
+!***> Run the capability
+!|Call In Create Postal Index To Database               |
+|Inputs       |Expected Outputs?|Expected Error Message?|
+|RqPICPID01_Id|(N/A)            |(N/A)                  |
+*!
+*!
+
+!3 Test Case Execution
+
+!*> Define Outputs
+!note Definition of Outputs
+!|ddt: Response For Place In Get Postal Index By Postal Code To Postal Index     |
+|FitnesseId      |Place Name     |Longitude|State    |State Abbreviation|Latitude|
+|RsPGPIBPCPI01_Id|Ramamurthynagar|77.55    |Karnataka|KA                |13.0333 |
+
+!|ddt: Response In Get Postal Index By Postal Code To Postal Index    |
+|FitnesseId     |PostCode|Country|CountryAbbreviation|Places          |
+|RsGPIBPCPI01_Id|560016  |India  |In                 |RsPGPIBPCPI01_Id|
+*!
+
+!*> Run the capability
+!note Capability call
+!|Call In Get Postal Index By Postal Code To Postal Index                                  |
+|#Test Case |Inputs|Expected Outputs?|Strict Order Comparison|Expected Error Message?|Debug|
+|Test Case 1|560016|RsGPIBPCPI01_Id  |false                  |(N/A)                  |true |
+*!

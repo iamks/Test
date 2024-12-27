@@ -1,0 +1,17 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<!-- Collect DLLs from all projects in the solution --><!--
+	<ItemGroup>
+		<AllProjectsDlls Include="$(SolutionDir)\**\bin\$(Configuration)\net8.0\*.dll" />
+	</ItemGroup>
+
+	--><!-- Copy all DLLs to a destination folder --><!--
+	<Target Name="CopyProjectDllsToFitnesseBinaries" AfterTargets="Build">
+		--><!-- Copy DLLs to the target folder --><!--
+		<Copy
+		  SourceFiles="@(AllProjectsDlls)"
+		  DestinationFolder="$(SolutionDir)\Test.Fixtures\Binaries\net8.0"
+		  SkipUnchangedFiles="true" />
+	</Target>-->
+
+</Project>

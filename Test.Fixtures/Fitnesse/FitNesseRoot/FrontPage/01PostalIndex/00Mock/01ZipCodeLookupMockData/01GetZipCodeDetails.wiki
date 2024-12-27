@@ -1,0 +1,33 @@
+---
+Static
+---
+!*> Fitnesse setup
+!note Import all the Fixtures' namespaces required in this fitnesse page
+!|import                                     |
+|Test.Fixtures.Mock.Rest.ZipCodeLookup       |
+|Test.Fixtures.Mock.Rest.ZipCodeLookup.Output|
+
+*!
+
+!headings
+!3 Mock Description
+!note Describe the intention and flow of the test case
+
+!*> Define Outputs
+!note Definition of Outputs
+!|ddt: Response For Place In Get Zip Code Details                            |
+|FitnesseId  |Place Name     |Longitude|State    |State Abbreviation|Latitude|
+|RsPGZCD01_Id|Ramamurthynagar|77.55    |Karnataka|KA                |13.0333 |
+
+!|ddt: Response In Get Zip Code Details                       |
+|FitnesseId |PostCode|Country|CountryAbbreviation|Places      |
+|RsGZCD01_Id|560016  |India  |In                 |RsPGZCD01_Id|
+*!
+
+!*> Run the capability
+!note Capability call
+!|Call In Get Zip Code Details                 |
+|EndPoint|Inputs|Outputs    |HttpResponseStatus|
+|560016  |(N/A) |RsGZCD01_Id|200               |
+
+*!
