@@ -76,7 +76,7 @@ namespace Test.Fixtures.Utils.DecisionTable
         {
             await base.Reset();
             Entry = new T();
-            await this.SetDefaultValueOnEntryProperties();
+            this.SetDefaultValueOnEntryProperties();
         }
 
         protected virtual void SetupCustomColumnMappings()
@@ -90,19 +90,19 @@ namespace Test.Fixtures.Utils.DecisionTable
         /// <param name="propertyName">column name</param>
         /// <param name="setPropertyFn">Function to set property value on property(column name) on type T</param>
         /// <returns></returns>
-        protected async virtual Task AddColumnMapping<TPropertyType>(
+        protected virtual void AddColumnMapping<TPropertyType>(
             string propertyName, 
             Action<T, TPropertyType> setPropertyFn)
         {
             var columnName = propertyName;
-            var converter = await ConverterManager.GetConverter<TPropertyType>();
+            var converter = ConverterManager.GetConverter<TPropertyType>();
             var setPropertyValueFn = (Action<T, object>) ((dto, value) => setPropertyFn(dto, (TPropertyType)value));
 
             var columnMap = new ColumnMap<T>(propertyName, converter, setPropertyValueFn);
             this.columnMappings.Add(columnMap);
         }
 
-        protected async virtual Task SetDefaultValueOnEntryProperties()
+        protected virtual void SetDefaultValueOnEntryProperties()
         {
         }
 
@@ -154,9 +154,7 @@ namespace Test.Fixtures.Utils.DecisionTable
             var propertyType = property.PropertyType;
             var methodInfo = typeof(ConverterManager).GetMethod("GetConverter").MakeGenericMethod(propertyType);
             
-            var converterTask = Task.Run(async () => await (Task<IConverter>)methodInfo.Invoke(null, null));
-            converterTask.Wait();
-            var converter = converterTask.Result;
+            var converter = (IConverter)methodInfo.Invoke(null, null);
 
             var setPropertyValueFn = (Action<T, object>)((dto, value) => property.SetValue(dto, value));
 

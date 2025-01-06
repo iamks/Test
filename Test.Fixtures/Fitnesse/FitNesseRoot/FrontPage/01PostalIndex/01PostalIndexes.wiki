@@ -46,18 +46,22 @@ Test
 
 !*> Define Outputs
 !note Definition of Outputs
-!|ddt: Response For Place In Get Postal Index By Postal Code To Postal Index     |
-|FitnesseId      |Place Name     |Longitude|State    |State Abbreviation|Latitude|
-|RsPGPIBPCPI01_Id|Ramamurthynagar|77.55    |Karnataka|KA                |13.0333 |
+!|ddt: Response For Place In Get Postal Index By Postal Code To Postal Index         |
+|FitnesseId      |Place Name         |Longitude|State    |State Abbreviation|Latitude|
+|RsPGPIBPCPI01_Id|Ramamurthynagar    |77.55    |Karnataka|KA                |13.0333 |
+|RsPGPIBPCPI02_Id|Jalahalli          |77.55    |Karnataka|KA                |13.0333 |
+|RsPGPIBPCPI03_Id|Jalahalli Villageso|77.55    |Karnataka|KA                |13.0333 |
 
-!|ddt: Response In Get Postal Index By Postal Code To Postal Index    |
-|FitnesseId     |PostCode|Country|CountryAbbreviation|Places          |
-|RsGPIBPCPI01_Id|560016  |India  |In                 |RsPGPIBPCPI01_Id|
+!|ddt: Response In Get Postal Index By Postal Code To Postal Index                     |
+|FitnesseId     |PostCode|Country|CountryAbbreviation|Places                           |
+|RsGPIBPCPI01_Id|560016  |India  |In                 |RsPGPIBPCPI01_Id                 |
+|RsGPIBPCPI02_Id|560013  |India  |In                 |RsPGPIBPCPI03_Id;RsPGPIBPCPI02_Id|
 *!
 
 !*> Run the capability
 !note Capability call
 !|Call In Get Postal Index By Postal Code To Postal Index                                  |
 |#Test Case |Inputs|Expected Outputs?|Strict Order Comparison|Expected Error Message?|Debug|
-|Test Case 1|560016|RsGPIBPCPI01_Id  |false                  |(N/A)                  |true |
+|Test Case 1|560016|RsGPIBPCPI01_Id  |false                  |(N/A)                  |false|
+|Test Case 2|560013|RsGPIBPCPI02_Id  |true                   |(N/A)                  |true |
 *!

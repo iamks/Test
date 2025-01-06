@@ -22,7 +22,6 @@ namespace Test.Esc.PostalIndex
 
         public async Task<PostalIndexSo> Create(PostalIndexSo postalIndexSo)
         {
-            Console.WriteLine("CreateDbC");
             var postalIndexDo = this.mapper.Map<PostalIndexDo>(postalIndexSo);
             await this.postalIndexRepository.Create(postalIndexDo);
 

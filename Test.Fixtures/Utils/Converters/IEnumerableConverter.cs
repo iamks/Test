@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Test.Fixtures.Utils.Converters.Contract;
+﻿using Test.Fixtures.Utils.Converters.Contract;
 using Test.Fixtures.Utils.Converters.Factory;
 using Test.Fixtures.Utils.Extensions;
 
@@ -26,7 +25,7 @@ namespace Test.Fixtures.Utils.Converters
 
             var stringList = fitnesseValue.Split(DELIMITER).Select(val => val.Trim()).ToList();
             
-            var typeTItemConverterClass = await ConverterManager.GetConverter<TItem>();
+            var typeTItemConverterClass = ConverterManager.GetConverter<TItem>();
             var convertTasks = stringList.Select(str => typeTItemConverterClass.Convert(str));
             await Task.WhenAll(convertTasks);
 

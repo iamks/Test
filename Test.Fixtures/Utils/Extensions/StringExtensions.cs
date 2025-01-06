@@ -17,7 +17,7 @@ namespace Test.Fixtures.Utils.Extensions
 
         internal static async Task<T> ConvertFromFitnesseValue<T>(this string value)
         {
-            var typeTConverterClass = await ConverterManager.GetConverter<T>();
+            var typeTConverterClass = ConverterManager.GetConverter<T>();
             var convertedValue = await typeTConverterClass.Convert(value);
 
             return (T)convertedValue;

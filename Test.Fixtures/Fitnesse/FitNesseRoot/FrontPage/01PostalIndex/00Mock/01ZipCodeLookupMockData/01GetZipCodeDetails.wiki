@@ -15,13 +15,17 @@ Static
 
 !*> Define Outputs
 !note Definition of Outputs
-!|ddt: Response For Place In Get Zip Code Details                            |
-|FitnesseId  |Place Name     |Longitude|State    |State Abbreviation|Latitude|
-|RsPGZCD01_Id|Ramamurthynagar|77.55    |Karnataka|KA                |13.0333 |
+!|ddt: Response For Place In Get Zip Code Details                                |
+|FitnesseId  |Place Name         |Longitude|State    |State Abbreviation|Latitude|
+|RsPGZCD01_Id|Ramamurthynagar    |77.55    |Karnataka|KA                |13.0333 |
+|RsPGZCD02_Id|Jalahalli Villageso|77.55    |Karnataka|KA                |13.0333 |
+|RsPGZCD03_Id|Jalahalli          |77.55    |Karnataka|KA                |13.0333 |
 
-!|ddt: Response In Get Zip Code Details                       |
-|FitnesseId |PostCode|Country|CountryAbbreviation|Places      |
-|RsGZCD01_Id|560016  |India  |In                 |RsPGZCD01_Id|
+
+!|ddt: Response In Get Zip Code Details                                    |
+|FitnesseId |PostCode|Country|CountryAbbreviation|Places                   |
+|RsGZCD01_Id|560016  |India  |In                 |RsPGZCD01_Id             |
+|RsGZCD02_Id|560013  |India  |In                 |RsPGZCD02_Id;RsPGZCD03_Id|
 *!
 
 !*> Run the capability
@@ -29,5 +33,6 @@ Static
 !|Call In Get Zip Code Details                 |
 |EndPoint|Inputs|Outputs    |HttpResponseStatus|
 |560016  |(N/A) |RsGZCD01_Id|200               |
+|560013  |(N/A) |RsGZCD02_Id|200               |
 
 *!

@@ -28,7 +28,7 @@ namespace Test.Fixtures.Utils
             if (typeof(TRequest) != typeof(Empty))
             {
                 var requestContent = await this.Inputs.ConvertFromFitnesseValue<TRequest>();
-                requestBody = JsonConvert.SerializeObject(requestContent, Formatting.None);
+                requestBody = requestContent.Serialize<TRequest>(false);
             }
 
             if (typeof(TResponse) != typeof(Empty))

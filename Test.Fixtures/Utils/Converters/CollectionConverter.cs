@@ -10,7 +10,7 @@ namespace Test.Fixtures.Utils.Converters
 
         public async Task<object?> Convert(string fitnesseValue)
         {
-            var iEnumerableConverter = await ConverterManager.GetConverter<IEnumerable<TItem>>();
+            var iEnumerableConverter = ConverterManager.GetConverter<IEnumerable<TItem>>();
             var iEnumerables = await iEnumerableConverter.Convert(fitnesseValue);
 
             if(iEnumerables == null)

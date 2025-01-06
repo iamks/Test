@@ -6,7 +6,7 @@ namespace Test.Fixtures.Utils.Converters.Factory
 {
     public static class ConverterManager
     {
-        public static async Task<IConverter?> GetConverter<T>()
+        public static IConverter? GetConverter<T>()
         {
             IConverter? converterInstance = null;
 
@@ -14,7 +14,10 @@ namespace Test.Fixtures.Utils.Converters.Factory
                 ? Nullable.GetUnderlyingType(typeof(T))
                 : typeof(T);
 
-            var preRegisteredConverters = await FitnesseServiceRegistratorFactory.ServiceRegistrator.GetServices<IConverter>();
+            var preRegisteredConvertersTask = Task.Run(async () => await FitnesseServiceRegistratorFactory.ServiceRegistrator.GetServices<IConverter>());
+            preRegisteredConvertersTask.Wait();
+            
+            var preRegisteredConverters = preRegisteredConvertersTask.Result;
             converterInstance = preRegisteredConverters.SingleOrDefault(x => x.Type == propertyType);
             
             if (converterInstance != null)
@@ -30,27 +33,27 @@ namespace Test.Fixtures.Utils.Converters.Factory
 
             if (propertyType.IsEnum)
             {
-                return await CreateAndRegisterGenericConverterInstance(typeof(EnumConverter<>), propertyType);
+                return CreateAndRegisterGenericConverterInstance(typeof(EnumConverter<>), propertyType);
             }
             else if (propertyType.IsGenericType && propertyType.IsObjectOfType(typeof(IEnumerable<>)))
             {
                 var typeIEnumerableConverter = typeof(IEnumerableConverter<>);
                 var typeTItem = propertyType.GenericTypeArguments[0];
 
-                return await CreateAndRegisterGenericConverterInstance(typeIEnumerableConverter, typeTItem);
+                return CreateAndRegisterGenericConverterInstance(typeIEnumerableConverter, typeTItem);
             }
             else if(propertyType.IsGenericType && propertyType.IsObjectOfType(typeof(ICollection<>)))
             {
                 var typeCollectionConverter = typeof(CollectionConverter<>);
                 var typeTItem = propertyType.GenericTypeArguments[0];
 
-                return await CreateAndRegisterGenericConverterInstance(typeCollectionConverter, typeTItem);
+                return CreateAndRegisterGenericConverterInstance(typeCollectionConverter, typeTItem);
             }
 
-            return await CreateAndRegisterGenericConverterInstance(typeof(FitnesseIdEntryConverter<>), propertyType);
+            return CreateAndRegisterGenericConverterInstance(typeof(FitnesseIdEntryConverter<>), propertyType);
         }
 
-        private static async Task<IConverter?> CreateAndRegisterGenericConverterInstance(Type converterType, Type genericType)
+        private static IConverter? CreateAndRegisterGenericConverterInstance(Type converterType, Type genericType)
         {
             var converterInstance = Activator.CreateInstance(converterType.MakeGenericType(genericType));
             var iConverterInstance = converterInstance as IConverter;
