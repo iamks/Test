@@ -9,6 +9,8 @@ Test
 |Test.Fixtures.Capability.PostalIndex.GetPostalIndexByPostalCode.Output|
 |Test.Fixtures.Database.PostalIndex.CreatePostalIndex                  |
 |Test.Fixtures.Database.PostalIndex.CreatePostalIndex.Input            |
+|Test.Fixtures.Database.PostalIndex.GetPostalIndexes                   |
+|Test.Fixtures.Database.PostalIndex.GetPostalIndexes.Input             |
 
 *!
 
@@ -60,8 +62,30 @@ Test
 
 !*> Run the capability
 !note Capability call
-!|Call In Get Postal Index By Postal Code To Postal Index                                  |
-|#Test Case |Inputs|Expected Outputs?|Strict Order Comparison|Expected Error Message?|Debug|
-|Test Case 1|560016|RsGPIBPCPI01_Id  |false                  |(N/A)                  |false|
-|Test Case 2|560013|RsGPIBPCPI02_Id  |true                   |(N/A)                  |true |
+!|Call In Get Postal Index By Postal Code To Postal Index                            |
+|#Test Case |Inputs|Expected Outputs?|Strict Order Comparison|Expected Error Message?|
+|Test Case 1|560016|RsGPIBPCPI01_Id  |false                  |(N/A)                  |
+|Test Case 2|560013|RsGPIBPCPI02_Id  |true                   |(N/A)                  |
+*!
+
+!3 Verify Data
+!***> Check Postal Indexes In Database
+!***> Define Outputs
+!|ddt: Request For Place In Get Postal Indexes To Database                       |
+|Fitnesse Id |Place Name         |Longitude|State    |State Abbreviation|Latitude|
+|RqPGPID01_Id|Ramamurthynagar    |77.55    |Karnataka|KA                |13.0333 |
+|RqPGPID02_Id|Jalahalli Villageso|77.55    |Karnataka|KA                |13.0333 |
+|RqPGPID03_Id|Jalahalli          |77.55    |Karnataka|KA                |13.0333 |
+
+!|ddt: Request For Postal Index In Get Postal Index To Database                |
+|Fitnesse Id  |Post Code|Country|Country Abbreviation|Places                   |
+|RqPIGPID01_Id|560016   |India  |In                  |RqPGPID01_Id             |
+|RqPIGPID01_Id|560013   |India  |In                  |RqPGPID02_Id;RqPGPID02_Id|
+*!
+
+!***> Run the capability
+!|Call In Get Postal Indexes To Database         |
+|Inputs|Expected Outputs?|Expected Error Message?|
+|560016|(N/A)            |(N/A)                  |
+*!
 *!
