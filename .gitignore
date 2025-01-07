@@ -365,3 +365,5 @@ FodyWeavers.xsd
 
 # Files checked out by fitnesse
 *.zip
+Fitnesse\FitNesseRoot\RerunLastFailures_*.wiki
+Fitnesse\FitNesseRoot\Recentchanges.wiki

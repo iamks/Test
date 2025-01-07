@@ -40,7 +40,7 @@ namespace Test.Fixtures.Utils
                 var expectedOutputFitnesseId = this.expectedOutputs[this.index];
                 TOutput expected = await this.GetExpectedResponse(expectedOutputFitnesseId);
 
-                var isOutputsEqual = await CompareOutputs(actual, expected);
+                var isOutputsEqual = await CompareOutputs(expected, actual);
                 if (isOutputsEqual)
                 {
                     this.ExpectedOutputs = expectedOutputs[this.index];
