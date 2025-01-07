@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using Test.Fixtures.Utils.DecisionTable;
+﻿using Test.Fixtures.Utils.DecisionTable;
 using Test.Fixtures.Utils.Extensions;
 using Test.Fixtures.Utils.ServiceRegistrator;
 
@@ -67,8 +66,6 @@ namespace Test.Fixtures.Utils.ExecutorBases
             index++;
 
             await base.Reset();
-            await FitnesseServiceRegistratorFactory.ServiceRegistrator.Release(capability);
-
             capability = default;
         }
 
@@ -103,6 +100,5 @@ namespace Test.Fixtures.Utils.ExecutorBases
 
             return expectedOutput.IsEqualTo(actualOutput, ignoreElementsOrder);
         }
-
     }
 }

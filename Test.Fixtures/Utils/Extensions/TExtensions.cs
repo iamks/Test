@@ -14,16 +14,24 @@ namespace Test.Fixtures.Utils.Extensions
 
             var actualJson = actual.Serialize<T>(false);
             var expectedJson = expected.Serialize<T>(false);
+            
+            var doesCommonPropertiesHaveSameValues = CompareCommonProperties(actualJson, expectedJson);
 
-            Func<string, string, bool> defaultStringCompareFn = (json1, json2) => json1.Equals(json2, StringComparison.InvariantCulture);
-
-            if (ignoreElementsOrder && !defaultStringCompareFn(actualJson, expectedJson))
+            if (ignoreElementsOrder && !doesCommonPropertiesHaveSameValues)
             {
                 actualJson = Normalize(actualJson);
                 expectedJson = Normalize(expectedJson);
             }
 
-            return defaultStringCompareFn(actualJson, expectedJson);       
+            return CompareCommonProperties(actualJson, expectedJson);       
+        }
+
+        private static bool CompareCommonProperties(string actualJson, string expectedJson)
+        {
+            var actualJToken = JToken.Parse(actualJson);
+            var expectedJToken = JToken.Parse(expectedJson);
+
+            return actualJToken.CompareJSonTokensCommonProperties(expectedJToken);
         }
 
         private static string Normalize(string jsonString)

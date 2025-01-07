@@ -80,12 +80,13 @@ Test
 !|ddt: Request For Postal Index In Get Postal Index To Database                |
 |Fitnesse Id  |Post Code|Country|Country Abbreviation|Places                   |
 |RqPIGPID01_Id|560016   |India  |In                  |RqPGPID01_Id             |
-|RqPIGPID01_Id|560013   |India  |In                  |RqPGPID02_Id;RqPGPID02_Id|
+|RqPIGPID02_Id|560013   |India  |In                  |RqPGPID02_Id;RqPGPID03_Id|
 *!
 
 !***> Run the capability
 !|Call In Get Postal Indexes To Database         |
 |Inputs|Expected Outputs?|Expected Error Message?|
-|560016|(N/A)            |(N/A)                  |
+|560016|RqPIGPID01_Id    |(N/A)                  |
+|560013|RqPIGPID02_Id    |(N/A)                  |
 *!
 *!
