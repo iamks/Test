@@ -57,6 +57,7 @@ namespace Test.Fixtures.Utils
             }
             catch (Exception ex)
             {
+                this.ExpectedErrorMessage = ex.Message;
                 Console.WriteLine("Exception in ExecutorBase: {0}\nStack trace:{1}", ex);
             }
         }
