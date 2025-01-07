@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Linq.Expressions;
 
-namespace Test.Fixtures.Utils
+namespace Test.Fixtures.Utils.ExecutorBases
 {
     public abstract class ServiceExecutorBase<TService, TInput, TOutput> : ExecutorBase<TService, TInput, TOutput>
        where TService : class

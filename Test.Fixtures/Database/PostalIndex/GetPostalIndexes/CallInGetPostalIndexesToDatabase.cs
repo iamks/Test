@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Test.Esc.PostalIndex.DataAccess.Context;
 using Test.Esc.PostalIndex.DataAccess.Do;
-using Test.Fixtures.Utils;
+using Test.Fixtures.Utils.ExecutorBases;
 
 namespace Test.Fixtures.Database.PostalIndex.GetPostalIndexes
 {

@@ -367,3 +367,5 @@ FodyWeavers.xsd
 *.zip
 Fitnesse/FitNesseRoot/RerunLastFailures_*.wiki
 Fitnesse/FitNesseRoot/RecentChanges.wiki
+/Test.Fixtures/Fitnesse/FitNesseRoot/RecentChanges.wiki
+/Test.Fixtures/Fitnesse/FitNesseRoot/RerunLastFailures_FrontPage.wiki

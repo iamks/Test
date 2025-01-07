@@ -1,5 +1,5 @@
 ﻿using Test.DataAccess.ZipCodeLookup.Do;
-using Test.Fixtures.Utils;
+using Test.Fixtures.Utils.ExecutorBases;
 
 namespace Test.Fixtures.Mock.Rest.ZipCodeLookup
 {
