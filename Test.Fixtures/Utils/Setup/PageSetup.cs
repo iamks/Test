@@ -20,9 +20,6 @@ namespace Test.Fixtures.Utils.Setup
                 EntryColumnsManager.ClearData();
                 DecisionTableEntriesManager.ClearData();
 
-                //var clearDataTask = Task.Run(async () => await DatabaseSetup.ClearData());
-                //clearDataTask.Wait();
-
                 DatabaseSetup.ClearData();
             }
             catch (Exception ex)

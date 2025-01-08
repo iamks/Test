@@ -78,6 +78,5 @@ namespace Test.Fixtures.Utils.Rest
 
             return normalizedCurrentJObject == normalizedOtherJObject;
         }
-
     }
 }

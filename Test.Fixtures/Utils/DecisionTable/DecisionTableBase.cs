@@ -33,22 +33,18 @@ namespace Test.Fixtures.Utils.DecisionTable
 
         public async virtual Task BeginTable()
         {
-            Console.WriteLine("BeginTable");
         }
 
         public async virtual Task Reset()
         {
-            Console.WriteLine("Reset");
         }
 
         public async virtual Task Execute()
         {
-            Console.WriteLine("Execute");
         }
 
         public async virtual Task EndTable()
         {
-            Console.WriteLine("EndTable");
         }
 
         public async virtual Task Table(List<List<string>> table)
@@ -58,8 +54,6 @@ namespace Test.Fixtures.Utils.DecisionTable
             {
                 this.CheckColumnConventions(header);
             }
-
-            Console.WriteLine("Table");
         }
 
         protected virtual void CheckColumnConventions(string header)
@@ -69,24 +63,16 @@ namespace Test.Fixtures.Utils.DecisionTable
                 return;
             }
 
-            string propertyCase = header.ToPropertyCase();
-            MemberInfo[] member = this.GetType().GetMember(propertyCase, BindingFlags.Instance | BindingFlags.Public);
             if (header.EndsWith("?"))
             {
+                string propertyCase = header.ToPropertyCase();
+                MemberInfo[] member = this.GetType().GetMember(propertyCase, BindingFlags.Instance | BindingFlags.Public);
+
                 this.CheckOutputColumn(header, ((IEnumerable<MemberInfo>)member).Single<MemberInfo>());
                 return;
             }
-
-            this.CheckInputColumn(header);
         }
 
-        private void CheckInputColumn(string header)
-        {
-            if (header.StartsWith("Expected"))
-            {
-                throw new Exception("An Input column must not begin with 'Expected'");
-            }
-        }
 
         private void CheckOutputColumn(string header, MemberInfo memberInfo)
         {

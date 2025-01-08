@@ -19,8 +19,6 @@ namespace Test.Fixtures.Utils.Setup
             {
                 FitnesseServiceRegistratorFactory.Set(fitnesseServiceRegistrator);
 
-                //var initializeDbContextsTask = Task.Run(async () => await DatabaseSetup.InitializeDbContexts());
-                //initializeDbContextsTask.Wait();
                 DatabaseSetup.InitializeDbContexts();
             }
             catch (Exception ex)

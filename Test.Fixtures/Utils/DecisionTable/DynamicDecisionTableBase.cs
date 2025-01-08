@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Reflection;
+﻿using System.Reflection;
 using Test.Fixtures.Utils.Converters.Contract;
 using Test.Fixtures.Utils.Converters.Factory;
 using Test.Fixtures.Utils.Extensions;
@@ -58,8 +57,6 @@ namespace Test.Fixtures.Utils.DecisionTable
 
                 propertySetterFn(this.Entry, value);
             }
-            
-            //Console.WriteLine($"Set: {headerName} - {formattedHeaderName} - {value}");
         }
 
         /// <summary>
@@ -69,7 +66,6 @@ namespace Test.Fixtures.Utils.DecisionTable
         /// <returns></returns>
         public async virtual Task Get(string headerName)
         {
-            Console.WriteLine($"Get: {headerName}");
         }
 
         public override async Task Reset()
@@ -160,6 +156,5 @@ namespace Test.Fixtures.Utils.DecisionTable
 
             return new ColumnMap<T>(property.Name, converter, setPropertyValueFn);
         }
-
     }
 }

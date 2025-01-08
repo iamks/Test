@@ -6,10 +6,6 @@ namespace Test.Fixtures.Mock.Rest
 {
     public class MockHttpMessageHandler : DelegatingHandler
     {
-        public MockHttpMessageHandler()
-        {
-        }
-
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             var absoluteUri = new Uri(request.RequestUri.AbsoluteUri);

@@ -51,8 +51,6 @@ namespace Test.Fixtures.Utils.ExecutorBases
 
                     ExpectedOutputs = $"Expected output does not match the actual response:\r\nExpected:\r\n{expectedJson}\r\nActual:\r\n{actualJson}";
                 }
-
-                Console.WriteLine("Execute of Executor Base");
             }
             catch (Exception ex)
             {

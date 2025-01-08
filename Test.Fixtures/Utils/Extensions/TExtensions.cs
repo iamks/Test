@@ -31,7 +31,7 @@ namespace Test.Fixtures.Utils.Extensions
             var actualJToken = JToken.Parse(actualJson);
             var expectedJToken = JToken.Parse(expectedJson);
 
-            return actualJToken.CompareJSonTokensCommonProperties(expectedJToken);
+            return actualJToken.CompareCommonProperties(expectedJToken);
         }
 
         private static string Normalize(string jsonString)

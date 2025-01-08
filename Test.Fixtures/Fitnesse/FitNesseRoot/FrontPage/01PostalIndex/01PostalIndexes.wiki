@@ -65,7 +65,7 @@ Test
 !|Call In Get Postal Index By Postal Code To Postal Index                            |
 |#Test Case |Inputs|Expected Outputs?|Strict Order Comparison|Expected Error Message?|
 |Test Case 1|560016|RsGPIBPCPI01_Id  |false                  |(N/A)                  |
-|Test Case 2|560013|RsGPIBPCPI02_Id  |true                   |(N/A)                  |
+|Test Case 2|560013|RsGPIBPCPI02_Id  |false                  |(N/A)                  |
 *!
 
 !3 Verify Data

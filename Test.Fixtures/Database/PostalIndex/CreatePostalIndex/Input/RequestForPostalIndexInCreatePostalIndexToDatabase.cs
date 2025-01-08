@@ -3,11 +3,8 @@ using Test.Fixtures.Utils.DecisionTable;
 
 namespace Test.Fixtures.Database.PostalIndex.CreatePostalIndex.Input
 {
-    public class RequestForPostalIndexInCreatePostalIndexToDatabase : DynamicDecisionTableBase<PostalIndexDo>
+    public class RequestForPostalIndexInCreatePostalIndexToDatabase : DynamicDecisionTableBase<PostalIndexDo> 
     {
-        public override async Task Execute()
-        {
-            await base.Execute();
-        }
+
     }
 }

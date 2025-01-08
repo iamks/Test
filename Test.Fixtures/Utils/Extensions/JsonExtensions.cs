@@ -56,7 +56,7 @@ namespace Test.Fixtures.Utils.Extensions
             return jToken;
         }
 
-        public static bool CompareJSonTokensCommonProperties(this JToken token1, JToken token2)
+        public static bool CompareCommonProperties(this JToken token1, JToken token2)
         {
             if (token1.Type != token2.Type)
             {
@@ -88,7 +88,7 @@ namespace Test.Fixtures.Utils.Extensions
                 var value2 = jObject2[property.Name];
 
                 // Recursively compare values of common properties
-                if (!CompareJSonTokensCommonProperties(value1, value2))
+                if (!CompareCommonProperties(value1, value2))
                 {
                     return false; // If any common property values are different, return false
                 }
@@ -112,7 +112,7 @@ namespace Test.Fixtures.Utils.Extensions
             // Compare each element in the arrays
             for (int i = 0; i < sortedArray1.Count; i++)
             {
-                if (!CompareJSonTokensCommonProperties(sortedArray1[i], sortedArray2[i]))
+                if (!CompareCommonProperties(sortedArray1[i], sortedArray2[i]))
                 {
                     return false; // If any elements are different, return false
                 }
