@@ -14,12 +14,9 @@ namespace Test.Fixtures.Utils.Converters.Factory
                 ? Nullable.GetUnderlyingType(typeof(T))
                 : typeof(T);
 
-            var preRegisteredConvertersTask = Task.Run(async () => await FitnesseServiceRegistratorFactory.ServiceRegistrator.GetServices<IConverter>());
-            preRegisteredConvertersTask.Wait();
+            var preRegisteredConverters = FitnesseServiceRegistratorFactory.ServiceRegistrator.GetServices<IConverter>().GetAwaiter().GetResult();
             
-            var preRegisteredConverters = preRegisteredConvertersTask.Result;
             converterInstance = preRegisteredConverters.SingleOrDefault(x => x.Type == propertyType);
-            
             if (converterInstance != null)
             {
                 return converterInstance;

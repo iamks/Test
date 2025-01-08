@@ -19,9 +19,6 @@ namespace Test.Fixtures.Utils.ServiceRegistrator
             // Register IConfiguration for the Fitnesse
             this.AggregateIConfigurationService(services);
 
-            // Register DatabaseSetup
-            //services.AddSingleton<DatabaseSetup>();
-
             // Register custom Rest Handler and HttpClient
             this.AggregateHttpServices(services);
 

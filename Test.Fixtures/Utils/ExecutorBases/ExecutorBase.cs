@@ -22,7 +22,7 @@ namespace Test.Fixtures.Utils.ExecutorBases
 
         public bool StrictOrderComparison { get; set; }
 
-        public string ExpectedErrorMessage { get; private set; }
+        public string ExpectedErrorMessage { get; set; }
 
         public override async Task Execute()
         {

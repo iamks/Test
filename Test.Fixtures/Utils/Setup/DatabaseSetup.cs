@@ -6,22 +6,18 @@ namespace Test.Fixtures.Utils.Setup
 {
     public static class DatabaseSetup
     {
-        private static readonly List<DbContext> _dbContexts = [];
-
         private const string Database_Path = "../Binaries/net8.0/win-x64/Database/";
 
         public static void InitializeDbContexts()
         {
             // Add all the Dbcontexts used in the application here
-            var initializePostalIndexDbContext = Task.Run(async () => await InitializePostalIndexDbContext());
-            initializePostalIndexDbContext.Wait();
+            InitializePostalIndexDbContext().GetAwaiter().GetResult();
         }
 
         public static void ClearData()
         {
             // Run ClearData scripts on each DbContext
-            var clearDataOnPostalIndexDbContextTask = Task.Run(async () => await ClearDataOnPostalIndexDbContext());
-            clearDataOnPostalIndexDbContextTask.Wait();
+            ClearDataOnPostalIndexDbContext().GetAwaiter().GetResult();
         }
 
         #region PostalIndexDbContext
@@ -29,8 +25,6 @@ namespace Test.Fixtures.Utils.Setup
         private static async Task InitializePostalIndexDbContext()
         {
             var postalIndexDbContext = await FitnesseServiceRegistratorFactory.ServiceRegistrator.GetRequiredService<PostalIndexDbContext>();
-            _dbContexts.Add(postalIndexDbContext);
-
             await postalIndexDbContext.Database.EnsureCreatedAsync();
         }
 

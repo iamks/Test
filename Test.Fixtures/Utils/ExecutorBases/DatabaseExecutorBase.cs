@@ -13,7 +13,6 @@ namespace Test.Fixtures.Utils.ExecutorBases
             return base.CompareOutputs(expectedOutput, actualOutput);
         }
 
-
         private static TOutput RemoveReferenceLooping(TOutput output)
         {
             var settings = new JsonSerializerSettings
